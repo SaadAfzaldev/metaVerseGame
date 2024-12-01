@@ -1,0 +1,84 @@
+datasource db {
+  // could be postgresql or mysql
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+ 
+generator db {
+  provider = "go run github.com/steebchen/prisma-client-go"
+}
+
+model User {
+  id       String  @id @unique @default(cuid())
+  username String  @unique
+  password String  
+  avatarId String?
+  role     Role
+  spaces   Space[]
+  avatar   Avatar? @relation(fields: [avatarId], references: [id])
+}
+
+model Space {
+
+  id        String  @id @unique @default(cuid())
+  name      String
+  width     Int
+  height    Int?
+  thumbnail String?
+  creatorId String
+  creator   User    @relation(fields: [creatorId], references: [id])
+  elements  spaceElements[]
+
+}
+
+model spaceElements {
+  id        String @id @unique @default(cuid())
+  elementId String
+  spaceId   String
+  x         Int
+  y         Int
+  space     Space  @relation(fields: [spaceId], references: [id])
+  element   Element @relation(fields: [elementId], references: [id])
+}
+
+model Element {
+  id       String @id @unique @default(cuid())
+  width    Int
+  height   Int
+  imageUrl String
+  spaces   spaceElements[]
+  maps     mapElements[]
+
+}
+
+model Map {
+  id     String  @id @unique @default(cuid())
+  width  Int
+  height Int
+  name   String
+  maps   mapElements[]
+
+}
+
+model mapElements {
+  id        String  @id @unique @default(cuid())
+  mapId     String
+  elementId String
+  x         Int?
+  y         Int?
+  element   Element @relation(fields: [elementId], references: [id])
+  map       Map     @relation(fields: [mapId], references: [id])
+}
+
+model Avatar {
+  id       String  @id @unique @default(cuid())
+  imageUrl String?
+  name     String?
+  users    User[]
+}
+
+enum Role {
+  Admin
+  User
+}
