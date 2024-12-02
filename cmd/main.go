@@ -19,10 +19,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	databaseURL := os.Getenv("DATABASE_URL"); 
+	databaseURL := os.Getenv("DATABASE_URL");
+	
 
 	if databaseURL == "" {
-		log.Fatal("DATABASE_URL must be set")
+		log.Fatal("database url must be set")
 	}
 		 
 	fmt.Println("DATABASE_URL:", databaseURL)
