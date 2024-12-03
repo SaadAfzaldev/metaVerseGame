@@ -1,4 +1,4 @@
-package database
+package models
 
 type UserSignUpBody struct {
 	Username string `json:"username" validate:"required"`

@@ -6,7 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/SaadAfzaldev/metaVerseGame/internal/database"
+	
+	"github.com/SaadAfzaldev/metaVerseGame/internal/database/models"
 	"github.com/SaadAfzaldev/metaVerseGame/prisma/db"
 	"github.com/go-playground/validator/v10"
 	"github.com/golang-jwt/jwt/v5"
@@ -22,7 +23,7 @@ func SignInHandler (w http.ResponseWriter, r * http.Request) {
 		http.Error(w,"Invalid Method", http.StatusMethodNotAllowed)
 		return 
 	}
-	var signinBody database.UserSignInBody 
+	var signinBody models.UserSignInBody
 
 	if err := json.NewDecoder(r.Body).Decode(&signinBody); err != nil {
 		

@@ -2,12 +2,13 @@ package handlers
 
 import (
 	"encoding/json"
-	
+
 	"log"
 
 	"net/http"
 
-	"github.com/SaadAfzaldev/metaVerseGame/internal/database"
+	
+	"github.com/SaadAfzaldev/metaVerseGame/internal/database/models"
 	"github.com/SaadAfzaldev/metaVerseGame/prisma/db"
 	"github.com/go-playground/validator/v10"
 	"golang.org/x/crypto/bcrypt"
@@ -19,7 +20,7 @@ func SignupHandler (w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var signUpBody database.UserSignUpBody
+	var signUpBody models.UserSignUpBody
 
 	if err := json.NewDecoder(r.Body).Decode(&signUpBody); err != nil {
 		log.Fatal("json decoding error")

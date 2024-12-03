@@ -14,7 +14,7 @@ func  SetupUserRoutes (router * mux.Router)  {
 	apiv1 := router.PathPrefix("/api/v1").Subrouter()
 	userRouter := apiv1.PathPrefix("/user").Subrouter()
 
-	userRouter.Use(middlewares.AuthMiddleware)
+	userRouter.Use(middlewares.UserMiddleware)
 
 	userRouter.HandleFunc("/metadata",userHandler.MetaDataHandler).Methods("POST")
 }
