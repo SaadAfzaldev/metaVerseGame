@@ -17,5 +17,6 @@ func  SetupUserRoutes (router * mux.Router)  {
 	userRouter.Use(middlewares.UserMiddleware)
 
 	userRouter.HandleFunc("/metadata",userHandler.MetaDataHandler).Methods("POST")
+	userRouter.HandleFunc("/metadata/bulk",userHandler.BulkMetaDataHandler).Methods("GET")
 }
 
