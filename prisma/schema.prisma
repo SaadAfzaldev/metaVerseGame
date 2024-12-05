@@ -23,7 +23,7 @@ model Space {
 
   id        String  @id @unique @default(cuid())
   name      String
-  width     Int
+  width     Int?
   height    Int?
   thumbnail String?
   creatorId String

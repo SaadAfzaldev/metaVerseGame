@@ -13,14 +13,15 @@ type UserSignInBody struct {
 
 type MetaDataUpdate struct{
 
-	AvatarId string `json:"avatarId"`	
+	AvatarId string `json:"avatarId" validate:"required"`	
 
 }
 
 type CreateSpace struct {
-
-	Name string `json:"name"`
-	Dimension  string   `json:"dimension"`
+	Name string `json:"name" validate:"required"`
+	Width int `json:"width" validate:"required"`
+	Height int `json:"height" validate:"required"`
+    	MapId string `json:"mapId"`
 }
 
 
