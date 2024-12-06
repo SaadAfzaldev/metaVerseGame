@@ -52,4 +52,7 @@ type CreateAvatar struct {
 	ImageUrl string `json:"imageUrl"`
 	Name string `json:"Name"`
 }
-
+type DeleteElement struct {
+	ElementId string `json:"elementId" validate:"required"`
+	SpaceId string `json:"spaceId" validate:"required"`
+}
