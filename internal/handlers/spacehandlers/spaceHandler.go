@@ -2,7 +2,7 @@ package spacehandlers
 
 import (
 	"encoding/json"
-	"fmt"
+	
 	"log"
 	"net/http"
 
@@ -86,7 +86,6 @@ func SpaceHandler (w http.ResponseWriter, r * http.Request) {
 	}
 
 	
-
 	space,err := client.Space.CreateOne(
 		db.Space.Name.Set(reqBody.Name),
 		db.Space.Width.Set(existingMap.Width),	
@@ -95,12 +94,23 @@ func SpaceHandler (w http.ResponseWriter, r * http.Request) {
 	).Exec(r.Context())
 
 	if err != nil {
-		log.Println("Error creating space:", err)
+		log.Println("Error creating space", err)
 		http.Error(w, "Error creating space", http.StatusInternalServerError)
 		return
 	}
-	
-	fmt.Println("space created",space.ID)
+
+
+
+
+	// When creating space elements
+	// Map Elements are in incomplete
+		
+	response := map[string]interface{}{
+		"message" : "space created successfully",
+		"spaceId" : space.ID,
+	}
 	
 	  
+	w.WriteHeader(http.StatusCreated)
+	json.NewEncoder(w).Encode(response)
 }

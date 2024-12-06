@@ -13,4 +13,6 @@ func SetUpSpaceRoutes (router * mux.Router) {
 	spaceRouter.Use(middlewares.UserMiddleware)
 
 	spaceRouter.HandleFunc("/",spacehandlers.SpaceHandler).Methods("POST")
+	spaceRouter.HandleFunc("/:spaceid",spacehandlers.DeleteSpaceHandler).Methods("DELETE")
+	spaceRouter.HandleFunc("/all",spacehandlers.GetAllSpacesHandler).Methods("GET")
 }

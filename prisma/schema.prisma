@@ -48,7 +48,7 @@ model Element {
   height   Int
   imageUrl String
   spaces   spaceElements[]
-  maps     mapElements[]
+  maps     MapElements[]
 
 }
 
@@ -57,11 +57,11 @@ model Map {
   width  Int
   height Int
   name   String
-  maps   mapElements[]
+  mapElements   MapElements[]
 
 }
 
-model mapElements {
+model MapElements {
   id        String  @id @unique @default(cuid())
   mapId     String
   elementId String
