@@ -27,18 +27,19 @@ type CreateSpace struct {
 
 type AddElement struct {
 	
-	Element string `json:"element"`
+	ElementId string `json:"element"`
 	X int 	`json:"x"`	
 	Y  int 	`json:"y"`	
+	SpaceId string `json:"spaceId"`
 }
 
 
 type CreateElement struct {
 
 	ImageUrl string `json:"imageUrl"`
-	Width int `json:"width"`
-	Height int `json:"height"`
-	Status bool`json:"status"`
+	Width int `json:"width" validate:"required"`
+	Height int `json:"height" validate:"required"`
+	Status bool`json:"status" validate:"required"`
 
 }
 

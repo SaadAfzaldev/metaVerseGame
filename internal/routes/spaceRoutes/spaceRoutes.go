@@ -15,5 +15,5 @@ func SetUpSpaceRoutes (router * mux.Router) {
 	spaceRouter.HandleFunc("/",spacehandlers.SpaceHandler).Methods("POST")
 	spaceRouter.HandleFunc("/:spaceid",spacehandlers.DeleteSpaceHandler).Methods("DELETE")
 	spaceRouter.HandleFunc("/all",spacehandlers.GetAllSpacesHandler).Methods("GET")
-	spaceRouter.HandleFunc("/element",spacehandlers.CreateElementHandler).Methods("POST")
+	spaceRouter.HandleFunc("/element",spacehandlers.AddElementHandler).Methods("POST")
 }
