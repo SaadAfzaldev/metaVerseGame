@@ -13,5 +13,6 @@ func SetUpAdminRoutes (router * mux.Router) {
 	adminRouter.Use(middlewares.AdminMiddleware)
 	adminRouter.HandleFunc("/element",adminhandlers.AddElementHandler).Methods("POST")
 	adminRouter.HandleFunc("/element/",adminhandlers.UpdateElementHandler).Methods("PUT")
+	adminRouter.HandleFunc("/avatar",adminhandlers.CreateAvatarHandler).Methods("POST")
 
 }

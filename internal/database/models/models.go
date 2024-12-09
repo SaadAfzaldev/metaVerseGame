@@ -27,10 +27,10 @@ type CreateSpace struct {
 
 type AddElement struct {
 	
-	ElementId string `json:"element"`
-	X int 	`json:"x"`	
-	Y  int 	`json:"y"`	
-	SpaceId string `json:"spaceId"`
+	ElementId string `json:"element" validate:"required"`
+	X int 	`json:"x" validate:"required"`	
+	Y  int 	`json:"y" validate:"required"`	
+	SpaceId string `json:"spaceId" validate:"required"`
 }
 
 
@@ -50,8 +50,8 @@ type  UpdateElement struct {
 }
 
 type CreateAvatar struct {
-	ImageUrl string `json:"imageUrl"`
-	Name string `json:"Name"`
+	ImageUrl string `json:"imageUrl" validate:"required"`
+	Name string `json:"Name" validate:"required"` 
 }
 type DeleteElement struct {
 	ElementId string `json:"elementId" validate:"required"`
