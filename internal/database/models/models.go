@@ -39,6 +39,7 @@ type CreateElement struct {
 	ImageUrl string `json:"imageUrl"`
 	Width int `json:"width" validate:"required"`
 	Height int `json:"height" validate:"required"`
+	// not status its static
 	Status bool`json:"status" validate:"required"`
 
 }
