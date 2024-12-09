@@ -26,3 +26,5 @@ go.work
 
 # Prisma generated files (optional, depends on your preference)
 prisma/db/
+
+file.txt

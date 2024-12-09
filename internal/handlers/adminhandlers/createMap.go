@@ -2,6 +2,7 @@ package adminhandlers
 
 import (
 	"encoding/json"
+	
 	"net/http"
 
 	"github.com/SaadAfzaldev/metaVerseGame/internal/database/models"
@@ -12,7 +13,8 @@ import (
 
 func CreateMapHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-
+	
+	
 	var reqBody models.CreateMap
 
 	if err := json.NewDecoder(r.Body).Decode(&reqBody); err != nil {	

@@ -63,10 +63,10 @@ type CreateMap struct {
 	Height       		int			`json:"height" validate:"required"`
 	Width       		int			`json:"width" validate:"required"`
 	Name         		string          	`json:"name" validate:"required"`
-	DefaultElements 		[]MapElement  	`json:"defaultElements" validate:"dive"`
+	// DefaultElements 		[]MapElement  	`json:"defaultElements" validate:"dive"`
 }
-type MapElement struct {
-	ElementID    string  `json:"elementId" validate:"required"`
-	X            float64 `json:"x" validate:"required"`
-	Y            float64 `json:"y" validate:"required"`
-}  
+// type MapElement struct {
+// 	ElementID    string  `json:"elementId" validate:"required"`
+// 	X            float64 `json:"x" validate:"required"`
+// 	Y            float64 `json:"y" validate:"required"`
+// }  

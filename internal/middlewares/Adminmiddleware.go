@@ -17,7 +17,8 @@ func AdminMiddleware (next http.Handler) http.Handler{
 		tokenString := r.Header.Get("Authorization")
 
 		if tokenString == "" {
-			
+			http.Error(w,"token not found",http.StatusUnauthorized)
+			return
 		}
 
 		jwtSecret := os.Getenv("JWT_SECRET") 

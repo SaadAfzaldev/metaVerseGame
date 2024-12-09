@@ -2,11 +2,11 @@ package handlers
 
 import (
 	"encoding/json"
+	
 	"log"
 	"net/http"
 	"os"
 
-	
 	"github.com/SaadAfzaldev/metaVerseGame/internal/database/models"
 	"github.com/SaadAfzaldev/metaVerseGame/prisma/db"
 	"github.com/go-playground/validator/v10"
@@ -72,6 +72,8 @@ func SignInHandler (w http.ResponseWriter, r * http.Request) {
 
 	}
 
+	
+
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256,claims)
 
 	var jwtSecret = os.Getenv("JWT_SECRET") 
@@ -79,7 +81,7 @@ func SignInHandler (w http.ResponseWriter, r * http.Request) {
 	if jwtSecret == "" {
 		http.Error(w, "JWT_SECRET not set", http.StatusInternalServerError)
 		return
-	  }
+	}
 
 	signedToken, err := token.SignedString([]byte(jwtSecret)) 
 
@@ -88,6 +90,7 @@ func SignInHandler (w http.ResponseWriter, r * http.Request) {
 		return
 	}
 
+		
 	response := map[string]string{
 		"token" : signedToken,
 	} 

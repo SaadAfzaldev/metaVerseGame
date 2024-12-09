@@ -15,5 +15,5 @@ func SetUpAdminRoutes (router * mux.Router) {
 	adminRouter.HandleFunc("/element",adminhandlers.AddElementHandler).Methods("POST")
 	adminRouter.HandleFunc("/element/",adminhandlers.UpdateElementHandler).Methods("PUT")
 	adminRouter.HandleFunc("/avatar",adminhandlers.CreateAvatarHandler).Methods("POST")
-
+	adminRouter.HandleFunc("/createmap",adminhandlers.CreateMapHandler).Methods("POST")
 }
