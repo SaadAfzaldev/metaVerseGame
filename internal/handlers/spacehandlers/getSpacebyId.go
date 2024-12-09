@@ -8,6 +8,7 @@ import (
 	"github.com/SaadAfzaldev/metaVerseGame/prisma/db"
 )
 
+// Get space by id
 func GetSpacebyId(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")	
