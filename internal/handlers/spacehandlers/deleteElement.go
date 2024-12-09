@@ -44,20 +44,33 @@ func DeleteElementHandler (w http.ResponseWriter, r * http.Request) {
 
 	defer client.Disconnect()
 
-	space,err := client.Space.FindUnique(
-		db.Space.ID.Equals(reqBody.SpaceId),
+	space,err := client.SpaceElements.FindUnique(
+		db.SpaceElements.ID.Equals(reqBody.ElementId),
 	).Exec(r.Context())
 
+
 	if err != nil {
-		http.Error(w,"Space not found with id "+reqBody.SpaceId,http.StatusBadRequest)
+		http.Error(w,"element not found ",http.StatusBadRequest)
 		return
 	}
 
-	if space.CreatorID != userId {
+	if space.Space().CreatorID != userId {
 		http.Error(w,"You are not the owner of this space",http.StatusBadRequest)
 		return
 	}
 
-	// delete element from space is not completed yet
 	
+	_,err = client.SpaceElements.FindUnique(
+		db.SpaceElements.ID.Equals(reqBody.ElementId),
+	).Delete().Exec(r.Context())	
+
+	if err != nil {
+		http.Error(w,"Error deleting element",http.StatusBadRequest)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	
+	json.NewEncoder(w).Encode(map[string]string{"message":"Element deleted successfully"})
+
 }

@@ -12,6 +12,8 @@ import (
 	
 )
 
+// SpaceHandler is a handler for creating spaces
+
 func SpaceHandler (w http.ResponseWriter, r * http.Request) {
 
 	w.Header().Set("Content-type","application/json")
