@@ -21,6 +21,7 @@ func main() {
 
 	routes.AuthRoutes(router)
 	routes.GetAllElements(router)
+	routes.GetAllAvatars(router)
 
 	userroutes.SetupUserRoutes(router)
 	spaceRoutes.SetUpSpaceRoutes(router)
