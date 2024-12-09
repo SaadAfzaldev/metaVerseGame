@@ -12,5 +12,6 @@ func SetUpAdminRoutes (router * mux.Router) {
 	adminRouter := router.PathPrefix("/admin").Subrouter()
 	adminRouter.Use(middlewares.AdminMiddleware)
 	adminRouter.HandleFunc("/element",adminhandlers.AddElementHandler).Methods("POST")
+	adminRouter.HandleFunc("/element/",adminhandlers.UpdateElementHandler).Methods("PUT")
 
 }
