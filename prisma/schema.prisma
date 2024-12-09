@@ -53,8 +53,10 @@ model Element {
 
 }
 
+// Thumbnail ??
 model Map {
   id     String  @id @unique @default(cuid())
+  thumbnail String
   width  Int
   height Int
   name   String

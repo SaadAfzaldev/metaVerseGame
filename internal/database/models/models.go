@@ -57,3 +57,16 @@ type DeleteElement struct {
 	ElementId string `json:"elementId" validate:"required"`
 	SpaceId string `json:"spaceId" validate:"required"`
 }
+
+type CreateMap struct {
+	Thumbnail   	 	string          	`json:"thumbnail" validate:"required"`
+	Height       		int			`json:"height" validate:"required"`
+	Width       		int			`json:"width" validate:"required"`
+	Name         		string          	`json:"name" validate:"required"`
+	DefaultElements 		[]MapElement  	`json:"defaultElements" validate:"dive"`
+}
+type MapElement struct {
+	ElementID    string  `json:"elementId" validate:"required"`
+	X            float64 `json:"x" validate:"required"`
+	Y            float64 `json:"y" validate:"required"`
+}  
