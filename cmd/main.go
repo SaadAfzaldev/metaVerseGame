@@ -20,6 +20,7 @@ func main() {
 	router := mux.NewRouter()
 
 	routes.AuthRoutes(router)
+	routes.GetAllElements(router)
 
 	userroutes.SetupUserRoutes(router)
 	spaceRoutes.SetUpSpaceRoutes(router)

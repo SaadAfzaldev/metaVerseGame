@@ -9,7 +9,8 @@ import (
 
 
 func SetUpAdminRoutes (router * mux.Router) {
-	adminRouter := router.PathPrefix("/admin").Subrouter()
+	apiv1 := router.PathPrefix("/api/v1").Subrouter()
+	adminRouter := apiv1.PathPrefix("/admin").Subrouter()
 	adminRouter.Use(middlewares.AdminMiddleware)
 	adminRouter.HandleFunc("/element",adminhandlers.AddElementHandler).Methods("POST")
 	adminRouter.HandleFunc("/element/",adminhandlers.UpdateElementHandler).Methods("PUT")
